@@ -7,19 +7,18 @@ fn mandelbrot(r: f32, i: f32) -> u16 {
     let mut i0: f32 = 0.0;
     let mut c: u16 = 0;
     while (r0 * r0 + i0 * i0) < 4.0 {
-        if c == 0xfff {
-            break;
+        if c == 0xffff {
+            return 0;
         }
         c += 1;
         let t: f32 = r0 * r0 - i0 * i0 + r;
         i0 = 2.0 * r0 * i0 + i;
         r0 = t;
     }
-    return c * 16;
+    return c;
 }
 
 fn main() {
-    // scan along i = 1.0 from -2 to +2, steps of 0.01
     let size: usize = 3000;
     let step: f32 = 3.0 / size as f32;
     let mut ms: Vec<u16> = Vec::with_capacity(size * size);
