@@ -11,8 +11,8 @@ fn mandelbrot(r: f32, i: f32) -> u16 {
             break;
         }
         c += 1;
-        let t: f32 = r * r - i * i + r0;
-        i0 = 2.0 * r0 * i0 + i0;
+        let t: f32 = r0 * r0 - i0 * i0 + r;
+        i0 = 2.0 * r0 * i0 + i;
         r0 = t;
     }
     return c;
